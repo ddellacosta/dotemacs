@@ -44,5 +44,9 @@
 
 (use-package nix-mode :ensure t)
 
+(setq-default css-indent-offset 2)
+
+(use-package scss-mode :ensure t)
+
 (provide 'misc)
 ;;; misc.el ends here
