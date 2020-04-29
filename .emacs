@@ -24,6 +24,7 @@
 (load "~/.emacs.d/dotemacs/company.el")
 (load "~/.emacs.d/dotemacs/haskell.el")
 (load "~/.emacs.d/dotemacs/clojure.el")
+(load "~/.emacs.d/dotemacs/org.el")
 
 (setq custom-file "~/.emacs.d/dotemacs/custom.el")
 (load custom-file)
