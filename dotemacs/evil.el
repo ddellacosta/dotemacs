@@ -5,7 +5,13 @@
   :config
 
   (evil-mode 1)
-  (evil-ex-define-cmd "bdp" 'kill-buffer)
+  (evil-ex-define-cmd "bdp" 'kill-buffer))
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
 
 ;;  (use-package evil-leader
 ;;    :ensure t
@@ -30,7 +36,15 @@
 ;;	  '(textobjects insert navigation additional shift todo heading))
 ;;    (add-hook 'org-mode-hook (lambda () (evil-org-mode))))
 
-  (use-package powerline-evil
-    :ensure t
-    :config
-    (powerline-evil-vim-color-theme)))
+(use-package powerline-evil
+  :ensure t
+  :config
+  (powerline-evil-vim-color-theme))
+
+(use-package evil-org
+  :ensure t
+  :after org
+  :hook (org-mode . (lambda () evil-org-mode))
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))

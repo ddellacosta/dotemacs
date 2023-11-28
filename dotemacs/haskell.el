@@ -5,37 +5,51 @@
   :config
   ;; (use-package haskell-indent :ensure t)
 
-  (use-package flycheck-haskell :ensure t)
+  ;;(use-package flycheck-haskell :ensure t)
 
   (use-package yasnippet :ensure t)
 
   (use-package lsp-mode
     :ensure t
     :hook (haskell-mode . lsp)
-    :commands lsp)
+    :commands lsp
+    :config
+    )
 
   (use-package lsp-ui
     :ensure t
-    :commands lsp-ui-mode)
+    :config
+    (setq lsp-ui-sideline-show-diagnostics f)
+    (setq lsp-ui-sideline-show-hover f)
+    (setq lsp-ui-sideline-show-code-actions t)
+    (setq lsp-ui-doc-enable f)
+    (setq lsp-ui-doc-show-with-cursor t)
+    ;; (setq lsp-ui-sideline-delay 5)
+    )
 
   (use-package lsp-haskell
     :ensure t
-    :config
-    (setq lsp-haskell-process-path-hie "ghcide")
-    (setq lsp-haskell-process-args-hie '()))
+;;    :config
+;;    (setq lsp-haskell-process-path-hie "ghcide")
+;;    (setq lsp-haskell-process-args-hie '()))
+    )
+
   ;; Comment/uncomment this line to see interactions between lsp client/server.
   ;;(setq lsp-log-io t)
 
   ;; (require 'haskell-interactive-mode)
   ;; (require 'haskell-process)
 
+  (add-hook 'haskell-mode-hook #'lsp)
+  (add-hook 'haskell-literate-mode-hook #'lsp)
+
   ;; (add-hook 'haskell-mode-hook 'flycheck-mode)
   ;; (add-hook 'haskell-mode-hook #'flycheck-haskell-setup)
   (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
   
-  (setq haskell-compile-cabal-build-command "cabal new-build")
-  (setq haskell-process-type 'cabal-new-repl)
-  (setq haskell-process-args-cabal-new-repl
+  (setq haskell-compile-cabal-build-command "cabal build")
+  (setq haskell-process-type 'cabal-repl)
+  (setq haskell-process-args-cabal-repl
         '("--ghc-options=-ferror-spans -fshow-loaded-modules"))
   (setq haskell-interactive-popup-errors nil)
   

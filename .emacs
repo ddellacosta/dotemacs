@@ -18,7 +18,6 @@
   (require 'use-package))
 
 (load "~/.emacs.d/dotemacs/misc.el")
-(load "~/.emacs.d/dotemacs/theme.el")
 (load "~/.emacs.d/dotemacs/evil.el")
 (load "~/.emacs.d/dotemacs/helm.el")
 (load "~/.emacs.d/dotemacs/company.el")
